@@ -40,8 +40,6 @@ jspm_packages
 .env
 
 # Automatically generated manifest.json file
-src/manifest.json
 manifest.json
 
-src/manifest.json
 .DS_Store
