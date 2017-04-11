@@ -1,0 +1,33 @@
+{
+  "connections": [
+    {
+      "port": 8080,
+      "labels": ["api"]
+    }
+  ],
+  "registrations": {
+      "$filter": "env",
+      "development": [
+        {
+          "plugin": "./app/api",
+          "options": {
+            "select": ["api"],
+            "routes": {
+              "prefix": "/api"
+            }
+          }
+        }
+      ],
+      "test": [
+        {
+          "plugin": "./app/api",
+          "options": {
+            "select": ["api"],
+            "routes": {
+              "prefix": "/api"
+            }
+          }
+        }
+      ]
+  }
+}

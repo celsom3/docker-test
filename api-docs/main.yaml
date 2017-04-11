@@ -1,0 +1,84 @@
+swagger: '2.0'
+info:
+  title: Test API
+  description: API documentation
+  version: '1.0.0'
+# the domain of the service
+host: api.example.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api/v1
+produces:
+  - application/json
+paths:
+  /session:
+    post:
+      summary: Logs a user in, initiating a session
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        -
+          name: LoginInfo
+          in: body
+          description: Email and Password
+          required: true
+          schema:
+            $ref: '#/definitions/LoginInfo'
+      responses:
+        200:
+          description: User successfully logged in
+          schema:
+            $ref: '#/definitions/sessionToken'
+        401:
+          description: Authentication Error
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: User not found
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Logs a user out, deleting a session
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        -
+          name: sessionToken
+          in: body
+          description: The sessionToken provided on login
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: User successfully logged out
+        400:
+          description: Server error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+definitions:
+  LoginInfo:
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+  sessionToken:
+    type: object
+    properties:
+      sessionToken:
+        type: string
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
