@@ -9,6 +9,12 @@
       "$filter": "env",
       "development": [
         {
+          "plugin": "./app/shared/plugins/mongoose",
+          "options": {
+            "select": ["api"]
+          }
+        },
+        {
           "plugin": "./app/api",
           "options": {
             "select": ["api"],
