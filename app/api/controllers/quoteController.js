@@ -7,6 +7,11 @@ const quoteController = {
       .then(reply)
       .catch((err) => reply(Boom.badRequest(err)));
   },
+  get(req, reply) {
+    quoteStore.getAll()
+      .then(reply)
+      .catch((err) => reply(Boom.badRequest(err)));
+  },
 };
 
 export default quoteController;

@@ -8,4 +8,9 @@ export default [
     handler: quoteController.create,
     config: config.quote,
   },
+  {
+    method: 'GET',
+    path: '/quotes',
+    handler: quoteController.get,
+  },
 ];
